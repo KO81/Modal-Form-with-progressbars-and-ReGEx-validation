@@ -53,7 +53,7 @@ validitY = function (what){
                     reg1=new RegExp("[A-Za-z0-9./]{1,}");
                 };
                 if(reg0=='email'){
-                    reg1=new RegExp("[A-Za-z0-9.@]{1,}");
+                    reg1=new RegExp("[A-Za-z0-9.@_-]{1,}");
                 };
                 if (!RegExp(what.reg1).test(g14[g13])) {
                     what.value = what.value.replace(g14[g13], '');validitY(what);
