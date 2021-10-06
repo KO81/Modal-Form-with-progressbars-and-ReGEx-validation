@@ -231,7 +231,7 @@ has_=function(what){if(!document.hasFocus()){return;};
     };
 },
 init=function(){
-    var z,a,b,c=['FORM','INPUT','TEXTAREA','BUTTON','SPAN'];
+    var z,a,b,c=['FORM','INPUT','TEXTAREA','BUTTON','SPAN','SELECT'];
     for (z = 0; z < c.length; z++) {a = body.getElementsByTagName(c[z]);
         try {
             for (b = 0; b < a.length; b++) {aa = a[b].nodeName;
