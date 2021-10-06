@@ -167,12 +167,12 @@ progs = function (what) {t9 = 0;t10 = 0;
             };
         };
         try {
-            if (!g16.querySelector('[type="submit"]').parentNode.classList.contains('disabled')) {
-                g16.querySelector('[type="submit"]').parentNode.classList.add('disabled');
+            if (!g16.parentNode.parentNode.parentNode.querySelector('[type="submit"]').parentNode.classList.contains('disabled')) {
+                g16.parentNode.parentNode.parentNode.querySelector('[type="submit"]').parentNode.classList.add('disabled');
             };
             if (t11 >= 99 && t17 >= 99) {
-                if (g16.querySelector('[type="submit"]').parentNode.classList.contains('disabled')) {
-                  g16.querySelector('[type="submit"]').parentNode.classList.remove('disabled');
+                if (g16.parentNode.parentNode.parentNode.querySelector('[type="submit"]').parentNode.classList.contains('disabled')) {
+                    g16.parentNode.parentNode.parentNode.querySelector('[type="submit"]').parentNode.classList.remove('disabled');
                 };
             };
             if (!g16.parentNode.querySelector('[type="submit"]').parentNode.classList.contains('disabled')) {
