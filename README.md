@@ -1,11 +1,14 @@
 # Modal Form with progressbars and ReGEx validation
-modal form with regular expression checks.and progressbars.
+modal & HTML form with regular expression checks.and progressbars.
 
 simple none id based form validition.
+
+readonly and input or textarea's with a class "off" are excluded
 
 Have a great day
 
 codePen "html form"
+
 https://codepen.io/ko81/pen/abweWre
 
 and "modal form"
