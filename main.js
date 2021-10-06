@@ -5,7 +5,7 @@ modal form with progressbars and validatin
 
 //if(document.querySelector('[data-bs-toggle="modal"]')!=null){document.querySelector('[data-bs-toggle="modal"]').click();}
 
-var b5=true, b8, b7,b6,a13,g5=true,t9,t10,g16,b20,g5,g8,g9,g13,g14,t8,t12,t13,t10,t11t15,t16,t17,t18reg0,reg1,reg2,reg3,reg4,lng0,lng1,lng2,lngType,lngnNode,lngrows;
+var b5=true, b8, b7,b6,a13,g5=true,t9,t10,g16,b20,g5,g8,g9,g13,g14,t8,t12,t13,t10,t11,t15,t16,t17,t18,reg0,reg1,lng0,lng1,lng2,lngType,lngnNode,lngrows;
 let lineHeight = 24,letterWidth = 5,defaultLength = 10;
 const body=document.getElementsByTagName('body')[0],forms=body.getElementsByTagName('form');
 const rest=body.querySelector('div.border-dark'),ohR=rest.getElementsByTagName('SPAN'); /*only for results*/
@@ -43,30 +43,21 @@ validitY = function (what){
             }
             if(typeof what.pattern === 'undefined' || typeof what.getAttribute('pattern') === 'undefined' && what.value.length >= 1){
                 reg0=what.type.toLowerCase();
-                reg1=new RegExp("[A-Za-zåøæÅØÆА0-9.!?, ]{1,}");
-                reg2=new RegExp("[0-9.,]{1,}");
-                reg3=new RegExp("[A-Za-z0-9./]{1,}");
-                reg4=new RegExp("[A-Za-z0-9.@]{1,}");
                 if(reg0=='text'){
-                    if (!RegExp(what.reg1).test(g14[g13])) {
-                        what.value = what.value.replace(g14[g13], '');
-                    };
+                    reg1=new RegExp("[A-Za-zåøæÅØÆА0-9.!?, ]{1,}");
                 }
                 if(reg0=='number'){
-                    if (!RegExp(what.reg1).test(g14[g13])) {
-                        what.value = what.value.replace(g14[g13], '');
-                    };
-                }
+                    reg1=new RegExp("[0-9.,]{1,}");
+                };
                 if(reg0=='url'){
-                    if (!RegExp(what.reg3).test(g14[g13])) {
-                        what.value = what.value.replace(g14[g13], '');
-                    };
-                }
+                    reg1=new RegExp("[A-Za-z0-9./]{1,}");
+                };
                 if(reg0=='email'){
-                    if (!RegExp(what.reg4).test(g14[g13])) {
-                        what.value = what.value.replace(g14[g13], '');
-                    };
-                }
+                    reg1=new RegExp("[A-Za-z0-9.@]{1,}");
+                };
+                if (!RegExp(what.reg1).test(g14[g13])) {
+                    what.value = what.value.replace(g14[g13], '');
+                };
             }
         };
     }
