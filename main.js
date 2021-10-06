@@ -5,7 +5,7 @@ modal form with progressbars and validatin
 
 //if(document.querySelector('[data-bs-toggle="modal"]')!=null){document.querySelector('[data-bs-toggle="modal"]').click();}
 
-var b5=true, b8, b7,b6,a13,g5=true,t9,t10,g16,b20,g5,g8,g9,g13,g14,t8,t12,t13,t10,t11,t15,t16,t17,t18,reg0,reg1,lng0,lng1,lng2,lngType,lngnNode,lngrows;
+var b5=true,b8,b7,b6,a13,t7,t8,t9,t10,b20,g6,g8,g9,g13,g14,g15,g16,t8,t12,t13,t10,t11,t15,t16,t17,t18,t19,reg0,reg1,lng0,lng1,lng2,lngType,lngnNode,lngrows;
 let lineHeight = 24,letterWidth = 5,defaultLength = 10;
 const body=document.getElementsByTagName('body')[0],forms=body.getElementsByTagName('form');
 const rest=body.querySelector('div.border-dark'),ohR=rest.getElementsByTagName('SPAN'); /*only for results*/
@@ -62,7 +62,7 @@ validitY = function (what){
 },
 progs = function (what) {t9 = 0;t10 = 0;
         try{ 
-            g16 = what.form;b20 = g16.querySelectorAll('[minlength]');
+            g16 = what.form;b20 = g16.querySelectorAll('[minlength]');t19 = g16.id;
         }catch(e){ e=0; return;}
     if(typeof b20!=='undefined'){
         for (t8 = 0; t8 < b20.length; t8++){
@@ -162,24 +162,16 @@ progs = function (what) {t9 = 0;t10 = 0;
                 };
             };
         };
-        try {
-            if (!g16.parentNode.parentNode.parentNode.querySelector('[type="submit"]').parentNode.classList.contains('disabled')) {
-                g16.parentNode.parentNode.parentNode.querySelector('[type="submit"]').parentNode.classList.add('disabled');
+        try {t7 = body.querySelector('span[for="'+t19+'"]');
+            if (!t7.parentNode.classList.contains('disabled')) {
+                t7.parentNode.classList.add('disabled');
             };
             if (t11 >= 99 && t17 >= 99) {
-                if (g16.parentNode.parentNode.parentNode.querySelector('[type="submit"]').parentNode.classList.contains('disabled')) {
-                    g16.parentNode.parentNode.parentNode.querySelector('[type="submit"]').parentNode.classList.remove('disabled');
+                if (t7.parentNode.classList.contains('disabled')) {
+                    t7.parentNode.classList.remove('disabled');
                 };
             };
-            if (!g16.parentNode.querySelector('[type="submit"]').parentNode.classList.contains('disabled')) {
-                g16.parentNode.querySelector('[type="submit"]').parentNode.classList.add('disabled');
-            };
-            if (t11 >= 99 && t17 >= 99) {
-                if (g16.parentNode.querySelector('[type="submit"]').parentNode.classList.contains('disabled')) {
-                  g16.parentNode.querySelector('[type="submit"]').parentNode.classList.remove('disabled');
-                };
-            };
-        } catch (error) {error=0;}
+        } catch (error) {error=0;};
     };
 },
 checK=function(what){b6=what.target.dataset.com;
