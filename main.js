@@ -44,7 +44,7 @@ validitY = function (what){
             if(typeof what.pattern === 'undefined' || typeof what.getAttribute('pattern') === 'undefined' && what.value.length >= 1){
                 reg0=what.type.toLowerCase();
                 if(reg0=='text'){
-                    reg1=new RegExp("[A-Za-zåøæÅØÆА0-9.!?, ]{1,}");
+                    reg1=new RegExp("[A-Za-zåøæÅØÆА0-9.!?,- ]{1,}");
                 }
                 if(reg0=='number'){
                     reg1=new RegExp("[0-9.,]{1,}");
