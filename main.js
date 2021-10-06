@@ -50,7 +50,7 @@ validitY = function (what){
                     reg1=new RegExp("[0-9.,]{1,}");
                 };
                 if(reg0=='url'){
-                    reg1=new RegExp("[A-Za-z0-9./]{1,}");
+                    reg1=new RegExp("[A-Za-z0-9./?&=:]{1,}");
                 };
                 if(reg0=='email'){
                     reg1=new RegExp("[A-Za-z0-9.@_-]{1,}");
