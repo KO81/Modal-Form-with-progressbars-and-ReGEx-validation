@@ -46,7 +46,7 @@ validitY = function (what){
                 reg1=new RegExp("[A-Za-zåøæÅØÆА0-9.!?, ]{1,}");
                 reg2=new RegExp("[0-9.,]{1,}");
                 reg3=new RegExp("[A-Za-z0-9./]{1,}");
-                reg3=new RegExp("[A-Za-z0-9.@]{1,}");
+                reg4=new RegExp("[A-Za-z0-9.@]{1,}");
                 if(reg0=='text'){
                     if (!RegExp(what.reg1).test(g14[g13])) {
                         what.value = what.value.replace(g14[g13], '');
