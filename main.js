@@ -14,10 +14,12 @@ const calcLength=function(what){let x;lngrows = undefined;
     try{
         lng0 = screen.availWidth;lng1 = what.clientWidth;lng2 = what.clientHeight;lngType = what.type;
         if(what.nodeName=='TEXTAREA'){lngrows = what.rows;
-            if(typeof lngrows==='undefined'){
-                x = Math.floor(what.clientWidth / letterWidth) * lngrows;
-            } else {lngrows = Math.floor(lng2 / lineHeight);
-                x = Math.floor(what.clientWidth / letterWidth) * lngrows;
+            if(what.nodeName=='TEXTAREA'){lngrows = what.rows;
+                if(typeof lngrows==='undefined'){
+                    lngrows = Math.floor(lng2 / lineHeight);
+                };x = Math.floor(what.clientWidth / letterWidth) * lngrows;
+            } else {
+                x = Math.floor(what.clientWidth / letterWidth);
             };
         } else {
             x = Math.floor(what.clientWidth / letterWidth);
