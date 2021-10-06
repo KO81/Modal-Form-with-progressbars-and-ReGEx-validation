@@ -119,7 +119,7 @@ progs = function (what) {t9 = 0;t10 = 0;
                 };
             }
             ohR[0].innerHTML=t17;     /*only for results*/
-            ohR[1].innerHTML=t12+'/'+t18;    /*only for results*/
+            ohR[1].innerHTML=t15+'/'+t18;    /*only for results*/
             ohR[2].innerHTML=t16;    /*only for results*/
             ohR[3].innerHTML=t18 - what.value.length;    /*only for results*/
             ohR[4].innerHTML=t11;    /*only for results*/
