@@ -14,13 +14,9 @@ const calcLength=function(what){let x;lngrows = undefined;
     try{
         lng0 = screen.availWidth;lng1 = what.clientWidth;lng2 = what.clientHeight;lngType = what.type;
         if(what.nodeName=='TEXTAREA'){lngrows = what.rows;
-            if(what.nodeName=='TEXTAREA'){lngrows = what.rows;
-                if(typeof lngrows==='undefined'){
-                    lngrows = Math.floor(lng2 / lineHeight);
-                };x = Math.floor(what.clientWidth / letterWidth) * lngrows;
-            } else {
-                x = Math.floor(what.clientWidth / letterWidth);
-            };
+            if(typeof lngrows==='undefined'){
+                lngrows = Math.floor(lng2 / lineHeight);
+            };x = Math.floor(what.clientWidth / letterWidth) * lngrows;
         } else {
             x = Math.floor(what.clientWidth / letterWidth);
         };
