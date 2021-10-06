@@ -34,11 +34,11 @@ validitY = function (what){
             if (typeof what.pattern !== 'undefined' || typeof what.getAttribute('pattern') !== 'undefined' && what.value.length >= 1){
                 if (what.nodeName == 'TEXTAREA'){
                     if (!RegExp(what.getAttribute('pattern')).test(g14[g13])) {
-                        what.value = what.value.replace(g14[g13], '');
+                        what.value = what.value.replace(g14[g13], '');validitY(what);
                     };
                 };
                 if (!RegExp(what.pattern).test(g14[g13])) {
-                    what.value = what.value.replace(g14[g13], '');
+                    what.value = what.value.replace(g14[g13], '');validitY(what);
                 };
             }
             if(typeof what.pattern === 'undefined' || typeof what.getAttribute('pattern') === 'undefined' && what.value.length >= 1){
@@ -56,7 +56,7 @@ validitY = function (what){
                     reg1=new RegExp("[A-Za-z0-9.@]{1,}");
                 };
                 if (!RegExp(what.reg1).test(g14[g13])) {
-                    what.value = what.value.replace(g14[g13], '');
+                    what.value = what.value.replace(g14[g13], '');validitY(what);
                 };
             }
         };
