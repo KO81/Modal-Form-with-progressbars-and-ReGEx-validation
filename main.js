@@ -73,7 +73,7 @@ validitY = function (what){
 },
 progs = function (what) {t9 = 0;t10 = 0;
         try{ 
-            g16 = what.form;b20 = g16.querySelectorAll('[minlength]');console.info(what.clientHeight,Math.floor(what.clientHeight / lineHeight) ,screen.availWidth,what.type)
+            g16 = what.form;b20 = g16.querySelectorAll('[minlength]');
         }catch(e){ e=0; return;}
     if(typeof b20!=='undefined'){
         for (t8 = 0; t8 < b20.length; t8++){
