@@ -147,19 +147,17 @@ progs = function (what) {t9 = 0;t10 = 0;
         e = 0;
         } finally {
             for (g12 = 0; g12 < g6.length; g12++) {
-                for (g12 = 0; g12 < g6.length; g12++) {
-                    if (Math.abs(g6[g12].attributes['aria-valuenow'].value) >= 99) {
+                if (Math.abs(g6[g12].attributes['aria-valuenow'].value) >= 99) {
+                    if (g6[g12].classList.contains('progress-bar-animated')) {
                         if (g6[g12].classList.contains('progress-bar-animated')) {
-                            if (g6[g12].classList.contains('progress-bar-animated')) {
-                                g6[g12].classList.remove('progress-bar-animated');
-                                g6[g12].classList.remove('progress-bar-striped');
-                            };
+                            g6[g12].classList.remove('progress-bar-animated');
+                            g6[g12].classList.remove('progress-bar-striped');
                         };
-                    } else {
-                        if (!g6[g12].classList.contains('progress-bar-animated')) {
-                            g6[g12].classList.add('progress-bar-animated');
-                            g6[g12].classList.add('progress-bar-striped');
-                        };
+                    };
+                } else {
+                    if (!g6[g12].classList.contains('progress-bar-animated')) {
+                        g6[g12].classList.add('progress-bar-animated');
+                        g6[g12].classList.add('progress-bar-striped');
                     };
                 };
             };
