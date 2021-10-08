@@ -14,6 +14,7 @@ https://codepen.io/ko81/pen/abweWre
 and "modal form"
 
 https://codepen.io/ko81/pen/xxrvqmz
+<br>
 <code>
     var manipulated = finish.a_in_man;
     var calculated = finish.a_calc;
