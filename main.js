@@ -5,7 +5,7 @@ modal form with progressbars and validatin
 
 //if(document.querySelector('[data-bs-toggle="modal"]')!=null){document.querySelector('[data-bs-toggle="modal"]').click();}
 
-var b5=true,b8,b7,b6,a13,t7,t8,t9,t10,b20,g6,g8,g9,g13,g14,g15,g16,t8,t12,t13,t10,t11,t15,t16,t17,t18,t19,reg0,reg1,lng0,lng1,lng2,lngType,lngnNode,lngrows;
+var b5=true,b8,b7,b6,a13,t7,t8,t9,t10,b20,g6,g8,g9,g13,g14,g15,g16,t8,t12,t13,t10,t11,t15,t16,t17,t18,t19,t20,reg0,reg1,lng0,lng1,lng2,lngType,lngnNode,lngrows;
 let lineHeight = 24,letterWidth = 5,defaultLength = 10;
 const body=document.getElementsByTagName('body')[0],forms=body.getElementsByTagName('form');
 const rest=body.querySelector('div.border-dark'),ohR=rest.getElementsByTagName('SPAN'); /*only for results*/
@@ -19,7 +19,7 @@ const calcLength=function(what){let x;lngrows = undefined;
             };x = Math.floor(what.clientWidth / letterWidth) * lngrows;
         } else {
             x = Math.floor(what.clientWidth / letterWidth);
-        };
+        };Object.defineProperty(what,'calc',{value:true,writable:false});
     } catch(e) 
         { e = 0; x = defaultLength;
     }finally{
@@ -33,10 +33,12 @@ validitY = function (what){
                 if (what.nodeName == 'TEXTAREA'){
                     if (!RegExp(what.getAttribute('pattern')).test(g14[g13])) {
                         what.value = what.value.replace(g14[g13], '');validitY(what);
+                        Object.defineProperty(what,'manipulated',{value:true,writable:false});
                     };
                 };
                 if (!RegExp(what.pattern).test(g14[g13])) {
                     what.value = what.value.replace(g14[g13], '');validitY(what);
+                    Object.defineProperty(what,'manipulated',{value:true,writable:false});
                 };
             }
             if(typeof what.pattern === 'undefined' || typeof what.getAttribute('pattern') === 'undefined' && what.value.length >= 1){
@@ -55,6 +57,7 @@ validitY = function (what){
                 };
                 if (!RegExp(what.reg1).test(g14[g13])) {
                     what.value = what.value.replace(g14[g13], '');validitY(what);
+                    Object.defineProperty(what,'manipulated',{value:true,writable:false});
                 };
             }
         };
@@ -89,9 +92,11 @@ progs = function (what) {t9 = 0;t10 = 0;
             try {
                 if(typeof what.maxLength==='undefined'){
                     what.maxLength = calcLength(what);
+                    Object.defineProperty(what,'calc',{value:true,writable:false});
                 };
                 if(typeof what.minLength==='undefined'){
                     what.minLength = 1;
+                    Object.defineProperty(what,'calc',{value:true,writable:false});
                 };
                 t16 = what.value.length,
                 t15 = what.minLength,
@@ -107,11 +112,6 @@ progs = function (what) {t9 = 0;t10 = 0;
                     t17 = 100;
                 };
             }
-            ohR[0].innerHTML=t17;     /*only for results*/
-            ohR[1].innerHTML=t15+'/'+t18;    /*only for results*/
-            ohR[2].innerHTML=t16;    /*only for results*/
-            ohR[3].innerHTML=t18 - what.value.length;    /*only for results*/
-            ohR[4].innerHTML=t11;    /*only for results*/
             g8 = what.form.querySelector('label[for="'+what.id+'"]');
             if(b20[t8].parentNode.classList.contains('form-floating')){
                 if (typeof g8.attributes.alt === 'undefined'){
@@ -130,8 +130,9 @@ progs = function (what) {t9 = 0;t10 = 0;
                     };
                 }catch(e){e=0;};
             }
-            if(typeof body.querySelector('label[for="'+what.id+'"]')!=null&&!what.form.classList.contains('off')){
-                body.querySelector('label[for="'+what.id+'"]').innerHTML = (t18 - what.value.length) + ' free of ' + t18;
+            t20 = body.querySelector('label[for="'+what.id+'"]')
+            if(t20!=g8&&!what.form.classList.contains('off')){
+               t20.innerHTML = (t18 - what.value.length);
             };
         };    
         try {
@@ -176,8 +177,74 @@ progs = function (what) {t9 = 0;t10 = 0;
             };
         } catch (error) {error=0;};
     };
+    if(typeof what.form.id==='undefined'){what.form.id=''};
+    if(typeof what.id==='undefined'){what.id=''};
+    if(typeof what.spellcheck==='undefined'){what.spellcheck=''};
+    if(typeof what.pattern==='undefined'){what.pattern=''};
+    let finish=new Object({
+      'a_in_com':t17,
+      'a_form_com':t11,
+      'a_in_free':(t18 - what.value.length),
+      'a_in_len':what.value.length,
+      'a_in_min':t15,
+      'a_in_max':t18,
+      'a_calc':what.calc,
+      'a_in_man':what.manipulated,
+      'current':({
+        'formId':what.form.id,
+        'objectId':what.id,
+        'objectName':what.name,
+        'maxLength':t18,
+        'minLength':t15,
+        'curElReq':t17,
+        'curElLen':what.value.length,
+        'curElFree':(t18 - what.value.length),
+        'event':what.evt,
+        'autocomplete':what.autocomplete,
+        'autofocus':what.autofocus,
+        'nodeName':what.nodeName,
+        'pattern':what.pattern,
+        'readOnly':what.readOnly,
+        'required':what.required,
+        'type':what.getAttribute('type'),
+        'multiple':what.multiple,
+        'spellcheck':what.spellcheck,
+        'hidden':what.hidden,
+        'class':what.attributes.class.value,
+        'timeStamp':Date.now()}),
+        'xElements':({
+          'xNodes':({'xCurInputObject':what,
+                     'xCurForm':what.form
+                    }),
+          'childLength':what.form.elements.length,
+          'formClass':what.form.attributes.class.value,
+          'formAction':what.form.action,
+          'formAutocomplete':what.form.autocomplete,
+          'formComplete':t11
+        })
+    })
+    // return finish;
+    // resullts at the bottom
+    ohR[0].innerHTML = finish.current.curElReq;
+    ohR[1].innerHTML = finish.current.minLength+'/'+finish.current.maxLength;
+    ohR[2].innerHTML = finish.a_in_len;
+    ohR[3].innerHTML = finish.a_in_free;
+    ohR[4].innerHTML = finish.xElements.formComplete;
+
+    var manipulated = finish.a_in_man;
+    var calculated = finish.a_calc;
+    var EvenT = finish.current.event;
+                         
+    console.info(manipulated,calculated,EvenT)
 },
 checK=function(what){b6=what.target.dataset.com;
+    if (typeof what.target.evt==='undefined') {
+      Object.defineProperty(what.target,'evt',{value:what.type,writable:true});
+      Object.defineProperty(what.target,'calc',{value:false,writable:true});
+      Object.defineProperty(what.target,'manipulated',{value:false,writable:true});
+    } else {
+      what.target.evt.value = what.type;
+    };
     if (what.target.isTrusted == false) {window.open('/', '_self').close();};
     if ((what.target.nodeName == 'INPUT' || what.target.nodeName == 'TEXTAREA') && what.type == 'keyup') {
         progs(what.target);validitY(what.target)
