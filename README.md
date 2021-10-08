@@ -14,3 +14,12 @@ https://codepen.io/ko81/pen/abweWre
 and "modal form"
 
 https://codepen.io/ko81/pen/xxrvqmz
+<code>
+    var manipulated = finish.a_in_man;
+    var calculated = finish.a_calc;
+    var EvenT = finish.current.event;
+                         
+    console.info(manipulated,calculated,EvenT)
+</code>
+
+happy coding
