@@ -112,15 +112,15 @@ progs = function (what) {t9 = 0;t10 = 0;
             ohR[2].innerHTML=t16;    /*only for results*/
             ohR[3].innerHTML=t18 - what.value.length;    /*only for results*/
             ohR[4].innerHTML=t11;    /*only for results*/
-            g8 = what.parentNode;
+            g8 = what.form.querySelector('label[for="'+what.id+'"]');
             if(b20[t8].parentNode.classList.contains('form-floating')){
-                if (typeof g8.getElementsByTagName('LABEL') [0].attributes.alt === 'undefined'){
-                    g8.getElementsByTagName('LABEL') [0].setAttribute('alt', g8.getElementsByTagName('LABEL') [0].innerHTML);
-                    g9 = g8.getElementsByTagName('LABEL') [0].getAttribute('alt')
-                }
-                g8.getElementsByTagName('LABEL') [0].innerHTML = g9 + ' <i class="ml-3"><b class="text-warning">free : ' + (t18 - what.value.length) + '</b></i>';
+                if (typeof g8.attributes.alt === 'undefined'){
+                    g8.setAttribute('alt', g8.innerHTML);
+                    
+                };g9 = g8.getAttribute('alt');
+                g8.innerHTML = g9 + ' <i class="ml-3"><b class="text-warning">free : ' + (t18 - what.value.length) + '</b></i>';
                 if (t17 <= 1) {
-                    g8.getElementsByTagName('LABEL') [0].innerHTML = g9
+                    g8.innerHTML = g9
                 };
             } else {
                 try{ a13=g16
@@ -130,6 +130,9 @@ progs = function (what) {t9 = 0;t10 = 0;
                     };
                 }catch(e){e=0;};
             }
+            if(typeof body.querySelector('label[for="'+what.id+'"]')!=null&&!what.form.classList.contains('off')){
+                body.querySelector('label[for="'+what.id+'"]').innerHTML = (t18 - what.value.length) + ' free of ' + t18;
+            };
         };    
         try {
             g6 = g16.querySelectorAll('div.progress-bar');
