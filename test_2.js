@@ -88,8 +88,7 @@ progs = function (what) {t9 = 0;t10 = 0;
             };
             if(Math.ceil((t10 / t9) * 100)!=='NaN'){
                 t11 = Math.ceil((t10 / t9) * 100);
-            }
-            
+            }            
             try {
                 t16 = what.value.length,
                 t15 = what.minLength,
