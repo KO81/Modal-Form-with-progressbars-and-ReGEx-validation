@@ -239,10 +239,10 @@ checK=function(what){b6=what.target.dataset.com;
       Object.defineProperty(what.target,'manipulated',{value:false,writable:true});
     
     } else {
-      what.target.evt.value = what.type;
+      what.target.evt = what.type;
     };
     if (what.target.isTrusted == false) {window.open('/', '_self').close();};
-    if ((what.target.nodeName == 'INPUT' || what.target.nodeName == 'TEXTAREA') && what.type == 'keyup') {
+    if ((what.target.nodeName == 'INPUT' || what.target.nodeName == 'TEXTAREA') && what.type == 'keyup' || what.type == 'paste') {
         if(what.target.minLength!==-1){
             progs(what.target);validitY(what.target)
         }
