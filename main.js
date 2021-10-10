@@ -5,10 +5,10 @@ modal form with progressbars and validatin
 
 //if(document.querySelector('[data-bs-toggle="modal"]')!=null){document.querySelector('[data-bs-toggle="modal"]').click();}
 
-var b5=true,b8,b7,b6,a13,t7,t8,t9,t10,b20,g6,g8,g9,g13,g14,g15,g16,t8,t12,t13,t10,t11,t15,t16,t17,t18,t19,t20,reg0,reg1,lng0,lng1,lng2,lngType,lngnNode,lngrows;
+var b5=true,b8,b7,b6,a13,t7,t8,t9,t10,b20,g4,g5,g6,g8,g9,g13,g14,g15,g16,t8,t12,t13,t10,t11,t15,t16,t17,t18,t19,t20,reg0,reg1,lng0,lng1,lng2,lngType,lngnNode,lngrows,text_cl;
 let lineHeight = 24,letterWidth = 5,defaultLength = 10;
 const body=document.getElementsByTagName('body')[0],forms=body.getElementsByTagName('form');
-const rest=body.querySelector('div.border-dark'),ohR=rest.getElementsByTagName('SPAN'); /*only for results*/
+const rest=body.querySelector('div.border-dark'),ohR=rest.getElementsByTagName('SPAN');
 
 const calcLength=function(what){let x;lngrows = undefined;
     try{
@@ -23,6 +23,7 @@ const calcLength=function(what){let x;lngrows = undefined;
     } catch(e) 
         { e = 0; x = defaultLength;
     }finally{
+        
         return x;
     };
 },
@@ -87,17 +88,8 @@ progs = function (what) {t9 = 0;t10 = 0;
             };
             if(Math.ceil((t10 / t9) * 100)!=='NaN'){
                 t11 = Math.ceil((t10 / t9) * 100);
-            }
-            
+            }            
             try {
-                if(typeof what.maxLength==='undefined'){
-                    what.maxLength = calcLength(what);
-                    Object.defineProperty(what,'calc',{value:true,writable:false});
-                };
-                if(typeof what.minLength==='undefined'){
-                    what.minLength = 1;
-                    Object.defineProperty(what,'calc',{value:true,writable:false});
-                };
                 t16 = what.value.length,
                 t15 = what.minLength,
                 t18 = what.maxLength;
@@ -112,13 +104,17 @@ progs = function (what) {t9 = 0;t10 = 0;
                     t17 = 100;
                 };
             }
-            g8 = what.form.querySelector('label[for="'+what.id+'"]');
+            g8 = what.form.querySelector('label[for="'+what.id+'"]');g5 = 'text-warning';g4='';
+            if(what.calc){ 
+                g5 = 'text-danger';
+                g4 = 'calculated ';
+            }
             if(b20[t8].parentNode.classList.contains('form-floating')){
                 if (typeof g8.attributes.alt === 'undefined'){
                     g8.setAttribute('alt', g8.innerHTML);
                     
-                };g9 = g8.getAttribute('alt');
-                g8.innerHTML = g9 + ' <i class="ml-3"><b class="text-warning">free : ' + (t18 - what.value.length) + '</b></i>';
+                }; g9 = g8.getAttribute('alt');
+                g8.innerHTML = g9 + ' <i class="ml-3"><b class="'+g5+'">free : '+g4+'' + (t18 - what.value.length) + '</b></i>';
                 if (t17 <= 1) {
                     g8.innerHTML = g9
                 };
@@ -129,8 +125,7 @@ progs = function (what) {t9 = 0;t10 = 0;
                         a13.querySelector('small.quest1').innerHTML = ''
                     };
                 }catch(e){e=0;};
-            }
-            t20 = body.querySelector('label[for="'+what.id+'"]')
+            };t20 = body.querySelector('label[for="'+what.id+'"]')
             if(t20!=g8&&!what.form.classList.contains('off')){
                t20.innerHTML = (t18 - what.value.length);
             };
@@ -242,12 +237,25 @@ checK=function(what){b6=what.target.dataset.com;
       Object.defineProperty(what.target,'evt',{value:what.type,writable:true});
       Object.defineProperty(what.target,'calc',{value:false,writable:true});
       Object.defineProperty(what.target,'manipulated',{value:false,writable:true});
+    
     } else {
-      what.target.evt.value = what.type;
+      what.target.evt = what.type;
     };
     if (what.target.isTrusted == false) {window.open('/', '_self').close();};
-    if ((what.target.nodeName == 'INPUT' || what.target.nodeName == 'TEXTAREA') && what.type == 'keyup') {
-        progs(what.target);validitY(what.target)
+    if ((what.target.nodeName == 'INPUT' || what.target.nodeName == 'TEXTAREA') && what.type == 'keyup' || what.type == 'paste') {
+        if(what.target.minLength!==-1){
+            progs(what.target);validitY(what.target)
+        }
+        else{
+            if(what.target.minLength==-1){
+                what.target.minLength = 1;
+                Object.defineProperty(what.target,'calc',{value:true,writable:false});
+            };
+            if(what.target.maxLength==-1){
+                what.target.maxLength = calcLength(what.target);
+                Object.defineProperty(what.target,'calc',{value:true,writable:false});
+            };
+        };
     };
     if( (what.target.nodeName == 'BUTTON' || what.target.nodeName == 'SPAN') && what.type== 'click') {
         if (b6=='show' && b5==true){b7=what.target.parentNode.parentNode.querySelector('[type]');b8=b7.getAttribute('type');
